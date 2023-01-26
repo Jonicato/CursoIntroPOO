@@ -1,9 +1,9 @@
 <?php
 class Car {
-    public $id;
-    public $license;
-    public $driver;
-    public $passenger;
+    private $id;
+    private $license;
+    private $driver;
+    protected $passenger;
 
     public function __construct($license, $driver) {
         $this->license = $license;
@@ -11,7 +11,21 @@ class Car {
     }
 
     public function printDataCar() {
-        echo "license: $this->license, conductor: {$this->driver->name}, document: {$this->driver->document}";
+        if ($this->passenger != null) {
+            echo "license: $this->license, \nconductor: {$this->driver->name}, \ndocument: {$this->driver->document} \nPassengers: $this->passenger";
+        }
+    }
+
+    public function getPassenger() {
+        return $this->passenger;
+    }
+
+    public function setPassenger($passenger) {
+        if ($passenger == 4) {
+            $this->passenger = $passenger;
+        } else { 
+            echo "Necesitas agregar 4 pasajeros";
+        }
     }
 }
 ?>
